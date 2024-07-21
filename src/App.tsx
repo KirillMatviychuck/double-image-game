@@ -18,7 +18,8 @@ function App() {
   const [activeCard, setActiveCard] = useState(false)
   const [isClicked, setIsClicked] = useState(false)
   const gameImages = [cat, cheetah, cow, dog, fox, parrot, rhino, turtle, cat, cheetah, cow, dog, fox, parrot, rhino, turtle]
-  // const shuffle = (array: string[]) => array.sort(() => Math.random() - 0.5);
+  const shuffle = (array: string[]) => array.sort(() => Math.random() - 0.5);
+  shuffle(gameImages)
   const flipHandler = () => setActiveCard(!activeCard)
 
   const onImageClickHandler = (id: number) => {

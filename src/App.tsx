@@ -15,10 +15,16 @@ import { useState } from 'react';
 function App() {
   const [gameBoard, setGameBoard] = useState<GameBoardType[]>([])
   const [checkImagesState, setCheckImagesState] = useState<GameBoardType[]>([])
+  const [activeCard, setActiveCard] = useState(false)
+  const [isClicked, setIsClicked] = useState(false)
   const gameImages = [cat, cheetah, cow, dog, fox, parrot, rhino, turtle, cat, cheetah, cow, dog, fox, parrot, rhino, turtle]
-  const shuffle = (array: string[]) => array.sort(() => Math.random() - 0.5);
+  // const shuffle = (array: string[]) => array.sort(() => Math.random() - 0.5);
+  const flipHandler = () => setActiveCard(!activeCard)
 
   const onImageClickHandler = (id: number) => {
+    setIsClicked(true)
+    setTimeout(() => setIsClicked(false), 400)
+    flipHandler()
     gameBoard[id].wasClicked = !gameBoard[id].wasClicked
     setGameBoard([...gameBoard])
     checkImagesState.push(gameBoard[id])
@@ -59,7 +65,7 @@ function App() {
     <div className='text-white'>
       <Routes>
         <Route path='/' element={<Navigate to='/game-board' />} />
-        <Route path='/game-board' element={<MainScreen gameBoard={gameBoard} onImageClickHandler={onImageClickHandler} />} />
+        <Route path='/game-board' element={<MainScreen gameBoard={gameBoard} onImageClickHandler={onImageClickHandler} activeCard={activeCard} isClicked={isClicked} />} />
       </Routes>
     </div>
   )

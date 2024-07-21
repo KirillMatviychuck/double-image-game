@@ -65,8 +65,8 @@ function App() {
   return (
     <div className='text-white'>
       <Routes>
-        <Route path='/' element={<Navigate to='/game-board' />} />
-        <Route path='/game-board' element={<MainScreen gameBoard={gameBoard} onImageClickHandler={onImageClickHandler} activeCard={activeCard} isClicked={isClicked} />} />
+        <Route path='/' element={<Navigate to='/double-image-game' />} />
+        <Route path='/double-image-game' element={<MainScreen gameBoard={gameBoard} onImageClickHandler={onImageClickHandler} activeCard={activeCard} isClicked={isClicked} />} />
       </Routes>
     </div>
   )
